@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f9fc">
+  <meta name="description" content="SNK Business Hub — Discover businesses, digital products, offers, ideas, videos and practical learning resources in one place.">
+  <title>SNK Business Hub — One Platform. Multiple Businesses.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f5f7fb;--surface:#fff;--surface-2:#f8fafc;--text:#142033;--muted:#718096;
+      --line:#e7edf4;--brand:#a7ef00;--brand-dark:#79b900;--navy:#101b2d;--blue:#3978f6;
+      --shadow:0 12px 35px rgba(24,39,75,.07);--radius:20px;
+    }
+    body.dark{--bg:#0b1220;--surface:#111c2e;--surface-2:#172338;--text:#edf3ff;--muted:#9aabc2;--line:#26364e;--navy:#08111f;--shadow:0 12px 35px rgba(0,0,0,.22)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Hind Siliguri",sans-serif;transition:background .25s,color .25s}
+    body.bn{font-family:"Hind Siliguri",Inter,sans-serif}a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}
+    .container{width:min(1440px,calc(100% - 36px));margin:auto}
+    .topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .topline{height:72px;display:flex;align-items:center;gap:22px}
+    .brand{display:flex;align-items:center;gap:11px;min-width:225px}
+    .logo{background:#101b2d;color:var(--brand);font-size:27px;font-weight:900;letter-spacing:-2px;padding:5px 11px;border-radius:12px;line-height:1.2}
+    .brand-name{font-weight:800;font-size:15px;line-height:1.2}.brand-tag{font-size:10px;color:var(--muted);margin-top:4px}
+    .search-wrap{flex:1;max-width:610px;position:relative}
+    .search{height:44px;width:100%;border:1px solid var(--line);border-radius:30px;background:var(--surface-2);color:var(--text);padding:0 46px 0 44px;outline:none}
+    .search:focus{border-color:var(--brand-dark);box-shadow:0 0 0 3px rgba(167,239,0,.15)}
+    .search-icon{position:absolute;left:17px;top:12px;color:var(--muted)}
+    .search-hint{position:absolute;right:13px;top:12px;color:var(--muted);font-size:10px;border:1px solid var(--line);border-radius:5px;padding:2px 5px}
+    .top-actions{display:flex;align-items:center;gap:9px;margin-left:auto}
+    .icon-btn,.lang-btn{height:39px;min-width:39px;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--text);display:grid;place-items:center}
+    .lang-btn{border-radius:22px;padding:0 13px;font-size:12px;font-weight:700}
+    .follow-btn{border:0;background:#101b2d;color:white;border-radius:22px;padding:11px 16px;font-size:12px;font-weight:700}
+    .navline{border-top:1px solid var(--line)}.nav{display:flex;align-items:center;gap:4px;min-height:49px;overflow:visible}
+    .nav a,.more-trigger{display:flex;align-items:center;gap:8px;padding:13px 14px;font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap;border:0;background:none}
+    .nav a:hover,.nav a.active,.more-trigger:hover{color:var(--brand-dark)}.nav a.active{border-bottom:2px solid var(--brand-dark)}
+    .more{position:relative}.more-menu{display:none;position:absolute;right:0;top:42px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:14px;padding:8px;min-width:190px}
+    .more.open .more-menu{display:block}.more-menu a{display:block;padding:10px 12px;border-radius:8px}.more-menu a:hover{background:var(--surface-2)}
+    .mobile-menu{display:none}
+    main{padding:24px 0 50px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:20px;align-items:start}
+    .hero{position:relative;overflow:hidden;min-height:285px;border-radius:22px;background:linear-gradient(90deg,rgba(5,14,24,.94),rgba(5,14,24,.65) 55%,rgba(5,14,24,.08)),url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85') center/cover;color:white;display:flex;align-items:center;padding:34px}
+    .hero-content{max-width:600px;position:relative;z-index:1}.eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(167,239,0,.16);border:1px solid rgba(167,239,0,.35);color:#c8ff61;padding:7px 12px;border-radius:30px;font-size:11px;font-weight:700}
+    h1{font-size:clamp(28px,3.2vw,43px);line-height:1.14;letter-spacing:-1.4px;margin:17px 0 12px}.hero p{font-size:14px;line-height:1.8;color:#e0e7ef;max-width:520px;margin:0}
+    .hero-buttons{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}.primary-btn,.ghost-btn{border:0;border-radius:30px;padding:12px 18px;font-weight:800;font-size:12px}.primary-btn{background:var(--brand);color:#15220a}.ghost-btn{background:rgba(255,255,255,.12);color:white;border:1px solid rgba(255,255,255,.22)}
+    .section{margin-top:25px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.section-title{font-size:19px;font-weight:800;margin:0}.section-sub{font-size:11px;color:var(--muted);margin-top:3px}.view-all{color:var(--blue);font-size:11px;font-weight:700}
+    .business-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:11px}.business-card{background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:17px 10px;text-align:center;transition:.2s;min-height:133px}
+    .business-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#c8e98a}.business-icon{height:43px;width:43px;border-radius:14px;margin:0 auto 10px;display:grid;place-items:center;font-size:20px;color:white}
+    .business-card strong{display:block;font-size:12px}.business-card small{display:block;color:var(--muted);font-size:10px;margin-top:5px}.business-card .explore{font-size:10px;color:var(--blue);margin-top:8px;display:block}
+    .filters{display:flex;gap:7px;flex-wrap:wrap}.filter{border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:7px 13px;border-radius:20px;font-size:11px}.filter.active{background:var(--navy);color:white;border-color:var(--navy)}
+    .post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.post-card{background:var(--surface);border:1px solid var(--line);border-radius:17px;overflow:hidden;transition:.2s}.post-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .post-image{height:155px;position:relative;background:var(--surface-2);overflow:hidden}.post-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}.post-card:hover img{transform:scale(1.04)}
+    .tag{position:absolute;left:11px;bottom:10px;background:var(--brand);color:#1c2b0c;border-radius:6px;padding:5px 8px;font-size:9px;font-weight:800}.play{position:absolute;inset:0;margin:auto;width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.62);color:white;border:1px solid rgba(255,255,255,.6)}
+    .post-body{padding:13px}.post-title{font-size:14px;font-weight:800;line-height:1.5;margin:0 0 7px}.post-excerpt{font-size:11px;line-height:1.65;color:var(--muted);margin:0}.post-meta{display:flex;justify-content:space-between;gap:8px;border-top:1px solid var(--line);padding:10px 13px;color:var(--muted);font-size:9px}.post-author{display:flex;align-items:center;gap:6px}.avatar{width:19px;height:19px;border-radius:50%;background:var(--navy);color:var(--brand);display:grid;place-items:center;font-size:8px;font-weight:900}
+    .bookmark{border:0;background:transparent;color:var(--muted);font-size:16px;padding:0 3px}.bookmark.saved{color:#e09a00}
+    .sidebar{display:grid;gap:15px}.side-card{background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:15px}.side-title{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:12px}
+    .trend{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}.trend:last-child{border:0;padding-bottom:0}.trend-num{font-size:11px;font-weight:800;color:var(--muted)}.trend img{width:57px;height:47px;border-radius:9px;object-fit:cover}.trend strong{font-size:10px;line-height:1.45;display:block}.trend small{font-size:9px;color:var(--muted)}
+    .newsletter{background:linear-gradient(135deg,#effbe0,#eef5ff);color:#17243a}.newsletter .side-title{color:#17243a}.newsletter p{font-size:10px;line-height:1.6;color:#617087}.newsletter-form{display:flex;gap:5px}.newsletter input{min-width:0;flex:1;border:1px solid #dbe4ef;border-radius:8px;padding:10px;font-size:10px;outline:none}.newsletter button{border:0;background:#0b9d5b;color:white;border-radius:8px;padding:0 12px;font-size:10px;font-weight:800}
+    .category-list{display:grid;gap:3px}.category-list button{display:flex;align-items:center;gap:9px;border:0;background:none;color:var(--text);padding:9px 3px;text-align:left;font-size:11px}.category-list button span:last-child{margin-left:auto;color:var(--muted);font-size:10px}
+    .video-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.video-card{position:relative;height:175px;border-radius:16px;overflow:hidden;background:#111}.video-card img{width:100%;height:100%;object-fit:cover;opacity:.78}.video-overlay{position:absolute;inset:auto 0 0;padding:35px 14px 13px;background:linear-gradient(transparent,rgba(0,0,0,.8));color:white}.video-overlay strong{font-size:13px}.video-overlay small{display:block;color:#d7e0ea;font-size:10px;margin-top:4px}
+    .empty{grid-column:1/-1;text-align:center;padding:35px;background:var(--surface);border:1px dashed var(--line);border-radius:15px;color:var(--muted);font-size:13px}
+    footer{background:var(--navy);color:#eaf0f7;padding:35px 0 20px;margin-top:20px}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px}.footer-brand{font-size:22px;font-weight:900;color:var(--brand)}footer p,footer a{font-size:11px;line-height:1.9;color:#aab8ca}footer h4{font-size:12px;margin:5px 0 12px}.footer-links{display:grid;gap:5px}.copyright{border-top:1px solid #26354a;margin-top:25px;padding-top:16px;color:#8494aa;font-size:10px;display:flex;justify-content:space-between;gap:12px}
+    .mobile-bottom{display:none}.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--navy);color:white;padding:11px 17px;border-radius:30px;font-size:12px;z-index:100;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+    .modal{display:none;position:fixed;inset:0;background:rgba(4,12,24,.65);z-index:90;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal-box{background:var(--surface);color:var(--text);width:min(650px,100%);max-height:85vh;overflow:auto;border-radius:20px;padding:22px;position:relative}.modal-close{position:absolute;right:15px;top:12px;border:0;background:var(--surface-2);color:var(--text);width:34px;height:34px;border-radius:50%;font-size:18px}.modal-box h2{font-size:22px;margin:5px 40px 12px 0}.modal-box p{font-size:13px;line-height:1.8;color:var(--muted)}
+    @media(max-width:1100px){.layout{grid-template-columns:minmax(0,1fr) 255px}.business-grid{grid-template-columns:repeat(3,1fr)}.nav a{padding:12px 9px;font-size:11px}.brand{min-width:190px}.post-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:820px){.container{width:min(100% - 26px,700px)}.topline{height:64px;gap:10px}.brand{min-width:auto}.brand-tag{display:none}.brand-name{font-size:12px}.logo{font-size:22px}.search-wrap{max-width:none}.search{height:40px;font-size:11px}.search-hint,.follow-btn,.lang-btn{display:none}.navline{display:none}.mobile-menu{display:grid}.top-actions{gap:6px}.layout{grid-template-columns:1fr}.sidebar{grid-template-columns:repeat(2,1fr)}.hero{min-height:270px;padding:25px}.hero p{font-size:12px}.post-grid{grid-template-columns:repeat(2,1fr)}main{padding-top:16px}.mobile-bottom{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:60;background:var(--surface);border-top:1px solid var(--line);justify-content:space-around;padding:8px 4px calc(8px + env(safe-area-inset-bottom))}.mobile-bottom a{font-size:9px;color:var(--muted);display:grid;gap:3px;justify-items:center}.mobile-bottom b{font-size:17px;font-weight:500}.mobile-bottom a.active{color:var(--brand-dark)}body{padding-bottom:65px}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}}
+    @media(max-width:520px){.container{width:calc(100% - 22px)}.topline{gap:8px}.brand-name{display:none}.logo{font-size:21px;padding:5px 8px}.search{padding-left:36px;padding-right:10px}.search-icon{left:12px}.hero{min-height:300px;padding:22px;background-position:58% center}.hero:after{content:"";position:absolute;inset:0;background:rgba(2,10,20,.18)}h1{font-size:29px}.hero-buttons{margin-top:17px}.business-grid{grid-template-columns:repeat(2,1fr);gap:8px}.business-card{min-height:125px;padding:13px 7px}.business-card:last-child{grid-column:span 2}.post-grid{gap:9px}.post-image{height:125px}.post-body{padding:10px}.post-title{font-size:12px}.post-excerpt{font-size:10px}.post-meta{padding:8px 10px;font-size:8px}.sidebar{grid-template-columns:1fr}.video-strip{grid-template-columns:1fr}.video-card{height:185px}.section-title{font-size:17px}.filters{gap:5px}.filter{padding:6px 10px;font-size:10px}.footer-grid{gap:18px}.copyright{display:block;line-height:2}.top-actions .icon-btn:nth-child(2){display:none}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="container topline">
+    <a class="brand" href="#home" aria-label="SNK Business Hub Home">
+      <span class="logo">SNK.</span><span><span class="brand-name">Business Hub</span><span class="brand-tag">One Platform. Multiple Businesses.</span></span>
+    </a>
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input class="search" id="searchInput" type="search" placeholder="Search articles, videos, products, services..." aria-label="Search">
+      <span class="search-hint">Ctrl K</span>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">☾</button>
+      <button class="icon-btn" id="notifyBtn" title="Notifications" aria-label="Notifications">♧</button>
+      <button class="lang-btn" id="langBtn">বাংলা</button>
+      <a class="follow-btn" href="https://snkbp.com" target="_blank" rel="noopener">◎ Follow SNK</a>
+      <button class="icon-btn mobile-menu" id="menuBtn" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+  <div class="navline" id="desktopNav">
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="active" href="#home">⌂ Home</a>
+      <a href="#businesses">▣ WebsitesDeal</a>
+      <a href="#offers">♡ Offers</a>
+      <a href="#businesses">▣ SNK App Store</a>
+      <a href="#businesses">⌘ SNK Architect</a>
+      <a href="#businesses">▤ SNK IT Institute</a>
+      <a href="#businesses">✧ Hire Designer</a>
+      <div class="more" id="moreMenu"><button class="more-trigger" id="moreBtn">More⌄</button><div class="more-menu">
+        <a href="#videos">Video Hub</a><a href="#latest">Blog & Articles</a><a href="#categories">Categories</a><a href="#about">About SNK</a><a href="https://snkbp.com" target="_blank" rel="noopener">SNK Business</a>
+      </div></div>
+    </nav>
+  </div>
+</header>
+
+<main class="container" id="home">
+  <div class="layout">
+    <div class="main-column">
+      <section class="hero">
+        <div class="hero-content">
+          <span class="eyebrow">✦ Welcome to SNK Business Hub</span>
+          <h1>Explore Ideas, Learn Skills,<br>Build Your Digital Future.</h1>
+          <p>Blogs, videos, offers, digital products and more — all in one place. Discover our businesses and grow with us.</p>
+          <div class="hero-buttons"><a class="primary-btn" href="#businesses">Explore Now&nbsp; →</a><a class="ghost-btn" href="#videos">▷ &nbsp;Watch Videos</a></div>
+        </div>
+      </section>
+
+      <section class="section" id="businesses">
+        <div class="section-head"><div><h2 class="section-title">Explore Our Businesses</h2><div class="section-sub">Discover the services and platforms under SNK</div></div><a class="view-all" href="#businesses">View all →</a></div>
+        <div class="business-grid">
+          <a class="business-card" href="https://websitesdeal.com" target="_blank" rel="noopener"><span class="business-icon" style="background:#3478f6">▣</span><strong>WebsitesDeal</strong><small>Ready-made websites</small><span class="explore">Explore →</span></a>
+          <a class="business-card" href="#apps"><span class="business-icon" style="background:#12b76a">▧</span><strong>SNK App Store</strong><small>Apps & digital tools</small><span class="explore">Explore →</span></a>
+          <a class="business-card" href="https://snkitinstitute.com" target="_blank" rel="noopener"><span class="business-icon" style="background:#793ee8">▤</span><strong>SNK IT Institute</strong><small>Learn skills, build career</small><span class="explore">Explore →</span></a>
+          <a class="business-card" href="#architect"><span class="business-icon" style="background:#f28b22">⌂</span><strong>SNK Architect</strong><small>Design & architecture</small><span class="explore">Explore →</span></a>
+          <a class="business-card" href="#hire"><span class="business-icon" style="background:#ed4e79">✧</span><strong>Hire Designer</strong><small>Creative design services</small><span class="explore">Explore →</span></a>
+        </div>
+      </section>
+
+      <section class="section" id="latest">
+        <div class="section-head"><div><h2 class="section-title">Latest Posts</h2><div class="section-sub">Ideas, updates and inspiration from SNK</div></div><div class="filters" id="filters">
+          <button class="filter active" data-filter="all">All</button><button class="filter" data-filter="blog">Blog</button><button class="filter" data-filter="video">Video</button><button class="filter" data-filter="offer">Offers</button><button class="filter" data-filter="app">Apps</button>
+        </div></div>
+        <div class="post-grid" id="postGrid"></div>
+      </section>
+
+      <section class="section" id="videos">
+        <div class="section-head"><div><h2 class="section-title">Video Hub</h2><div class="section-sub">Watch tutorials, business stories and creative ideas</div></div><a class="view-all" href="https://youtube.com/@Design2Codewithsnk" target="_blank" rel="noopener">YouTube Channel →</a></div>
+        <div class="video-strip">
+          <a class="video-card" href="https://youtube.com/@Design2Codewithsnk" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Web design workspace"><span class="play">▶</span><span class="video-overlay"><strong>Build a Better Digital Presence</strong><small>Web Design · SNK Business</small></span></a>
+          <a class="video-card" href="https://youtube.com/@Design2Codewithsnk" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1559028006-448665bd7c7f?auto=format&fit=crop&w=900&q=80" alt="Creative design workspace"><span class="play">▶</span><span class="video-overlay"><strong>Creative Skills for the Future</strong><small>Design & Learning · SNK IT Institute</small></span></a>
+        </div>
+      </section>
+
+      <section class="section" id="offers">
+        <div class="section-head"><div><h2 class="section-title">Special Offers</h2><div class="section-sub">Explore current promotions and featured deals</div></div><a class="view-all" href="https://websitesdeal.com" target="_blank" rel="noopener">Explore deals →</a></div>
+        <div class="post-grid" id="offerGrid"></div>
+      </section>
+    </div>
+
+    <aside class="sidebar">
+      <section class="side-card"><div class="side-title"><span>🔥 Trending Now</span><a class="view-all" href="#latest">View All →</a></div><div id="trendingList"></div></section>
+      <section class="side-card newsletter"><div class="side-title"><span>✉ Stay Updated</span></div><p>নতুন পোস্ট, অফার, টিউটোরিয়াল এবং ব্যবসার আপডেট পেতে সাবস্ক্রাইব করুন।</p><form class="newsletter-form" id="newsletterForm"><input type="email" id="newsletterEmail" placeholder="Your email address" required><button type="submit">Subscribe</button></form></section>
+      <section class="side-card" id="categories"><div class="side-title"><span>Popular Categories</span><a class="view-all" href="#latest">View All →</a></div><div class="category-list">
+        <button data-category="blog"><span>🌐</span> Web Development <span>48</span></button>
+        <button data-category="blog"><span>🎨</span> Graphic Design <span>32</span></button>
+        <button data-category="blog"><span>📈</span> Business & Marketing <span>28</span></button>
+        <button data-category="app"><span>🤖</span> Technology & AI <span>24</span></button>
+        <button data-category="video"><span>📚</span> Education & Learning <span>22</span></button>
+        <button data-category="offer"><span>🎁</span> Offers & Deals <span>18</span></button>
+      </div></section>
+      <section class="side-card"><div class="side-title"><span>🔖 Your Reading List</span></div><p style="font-size:11px;color:var(--muted);line-height:1.7;margin:0">Bookmark আইকনে চাপ দিয়ে পছন্দের পোস্ট এখানে সেভ করে রাখতে পারবেন।</p><button class="filter" id="showSaved" style="margin-top:12px">View saved posts</button></section>
+    </aside>
+  </div>
+</main>
+
+<footer id="about"><div class="container"><div class="footer-grid">
+  <div><div class="footer-brand">SNK. Business Hub</div><p>One Platform. Multiple Businesses. Discover ideas, digital products, services, learning resources and opportunities from the SNK ecosystem.</p></div>
+  <div><h4>Explore</h4><div class="footer-links"><a href="#latest">Latest Posts</a><a href="#videos">Video Hub</a><a href="#offers">Offers</a><a href="#categories">Categories</a></div></div>
+  <div><h4>SNK Network</h4><div class="footer-links"><a href="https://snkbp.com">SNK Business</a><a href="https://websitesdeal.com">WebsitesDeal</a><a href="https://snkitinstitute.com">SNK IT Institute</a><a href="https://github.com/ishahneilkhan">GitHub</a></div></div>
+</div><div class="copyright"><span>© <span id="year"></span> SNK Business Hub. All rights reserved.</span><span>Made for ideas, businesses & growth.</span></div></div></footer>
+
+<nav class="mobile-bottom" aria-label="Mobile navigation"><a class="active" href="#home"><b>⌂</b>Home</a><a href="#latest"><b>⌕</b>Search</a><a href="#videos"><b>▷</b>Video</a><a href="#saved" id="mobileSaved"><b>♡</b>Saved</a><a href="#about"><b>☻</b>Profile</a></nav>
+<div class="toast" id="toast" role="status"></div>
+<div class="modal" id="modal"><div class="modal-box"><button class="modal-close" id="modalClose" aria-label="Close">×</button><div id="modalContent"></div></div></div>
+
+<script>
+  // Demo content: later we will connect this data to the Admin Panel / database.
+  const posts = [
+    {id:1,type:"blog",tag:"Blog",title:"কেন আপনার ব্যবসার একটি ওয়েবসাইট থাকা জরুরি?",excerpt:"ডিজিটাল যুগে ব্যবসাকে আরও মানুষের কাছে পৌঁছে দিতে একটি ওয়েবসাইট হতে পারে আপনার শক্তিশালী পরিচয়।",author:"SNK Business Hub",read:"5 min read",date:"Oct 30, 2026",image:"https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",views:"2.5K",body:"একটি ওয়েবসাইট আপনার ব্যবসার অনলাইন পরিচয়। গ্রাহকরা যেকোনো সময় আপনার পণ্য, সেবা, মূল্য এবং যোগাযোগের তথ্য জানতে পারেন। পরিকল্পিত ওয়েবসাইট বিশ্বাসযোগ্যতা বাড়ায় এবং নতুন গ্রাহকের কাছে পৌঁছাতে সাহায্য করে।"},
+    {id:2,type:"video",tag:"Video",title:"Figma দিয়ে প্রফেশনাল UI Design শেখার সহজ পথ",excerpt:"শুরু থেকে অ্যাডভান্স পর্যায় পর্যন্ত, একদম সহজ উপায়ে UI Design শেখার গাইড।",author:"SNK IT Institute",read:"12 min watch",date:"Oct 29, 2026",image:"https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=900&q=80",views:"1.8K",body:"UI Design শেখার জন্য প্রথমে Design Principles, Typography, Color, Spacing এবং Layout বুঝুন। এরপর Figma-তে ছোট ছোট প্রজেক্ট তৈরি করে নিয়মিত অনুশীলন করুন।"},
+    {id:3,type:"offer",tag:"Offer",title:"সব ব্যবসার জন্য বিশেষ ওয়েবসাইট অফার!",excerpt:"আপনার ব্যবসার জন্য সাশ্রয়ী বাজেটে একটি আধুনিক ওয়েবসাইট তৈরি করুন।",author:"WebsitesDeal",read:"3 min read",date:"Oct 28, 2026",image:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80",views:"1.2K",body:"WebsitesDeal-এ বিভিন্ন ব্যবসার জন্য প্রস্তুত ওয়েবসাইট ও ডিজিটাল সল্যুশন খুঁজে দেখুন। বিস্তারিত প্যাকেজ ও শর্ত জানতে অফিসিয়াল ওয়েবসাইট ভিজিট করুন।"},
+    {id:4,type:"app",tag:"App",title:"SNK App Store: আপনার ডিজিটাল টুলস এক জায়গায়",excerpt:"উৎপাদনশীলতা, টুলস এবং আরও অনেক ডিজিটাল অ্যাপ খুঁজে নিন সহজেই।",author:"SNK App Store",read:"6 min read",date:"Oct 27, 2026",image:"https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=900&q=80",views:"980",body:"ডিজিটাল কাজকে সহজ করতে প্রয়োজনীয় অ্যাপ, টুলস এবং সফটওয়্যার এক জায়গায় সাজিয়ে রাখার ধারণা নিয়ে তৈরি হচ্ছে SNK App Store।"},
+    {id:5,type:"blog",tag:"Blog",title:"AI কীভাবে বদলে দিচ্ছে ডিজাইন ও ব্যবসার ভবিষ্যৎ",excerpt:"সঠিকভাবে AI ব্যবহার করলে কাজের গতি, আইডিয়া এবং উৎপাদনশীলতা বাড়ানো সম্ভব।",author:"SNK Business Hub",read:"7 min read",date:"Oct 26, 2026",image:"https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80",views:"870",body:"AI মানুষের সৃজনশীলতার বিকল্প নয়; বরং সঠিক নির্দেশনা ও দক্ষতার সঙ্গে এটি কাজকে দ্রুত এবং কার্যকর করতে পারে।"},
+    {id:6,type:"video",tag:"Video",title:"একটি ভালো Portfolio কীভাবে তৈরি করবেন?",excerpt:"নিজের কাজ সুন্দরভাবে উপস্থাপন করুন এবং ক্লায়েন্টের আস্থা অর্জন করুন।",author:"Design2Code with SNK",read:"9 min watch",date:"Oct 25, 2026",image:"https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=900&q=80",views:"760",body:"Portfolio-তে আপনার সেরা কাজ, সমস্যা সমাধানের প্রক্রিয়া, ভূমিকা এবং ফলাফল তুলে ধরুন। অপ্রয়োজনীয় কনটেন্ট বাদ দিয়ে পরিষ্কার উপস্থাপনা রাখুন।"}
+  ];
+  const $ = s => document.querySelector(s);
+  const postGrid = $("#postGrid"), offerGrid = $("#offerGrid"), trendingList = $("#trendingList");
+  let activeFilter = "all", query = "", saved = JSON.parse(localStorage.getItem("snkSavedPosts") || "[]"), savedOnly = false;
+
+  function card(post){
+    return `<article class="post-card" data-id="${post.id}">
+      <div class="post-image"><img loading="lazy" src="${post.image}" alt="${post.title}"><span class="tag">${post.tag}</span>${post.type==="video"?'<span class="play">▶</span>':""}</div>
+      <div class="post-body"><h3 class="post-title">${post.title}</h3><p class="post-excerpt">${post.excerpt}</p></div>
+      <div class="post-meta"><span class="post-author"><span class="avatar">S</span>${post.author}</span><span>${post.read}</span><button class="bookmark ${saved.includes(post.id)?"saved":""}" data-save="${post.id}" aria-label="Bookmark post">${saved.includes(post.id)?"★":"☆"}</button></div>
+    </article>`;
+  }
+  function render(){
+    const filtered = posts.filter(p => (activeFilter==="all" || p.type===activeFilter) && (!savedOnly || saved.includes(p.id)) && (query==="" || (p.title+" "+p.excerpt+" "+p.author+" "+p.tag).toLowerCase().includes(query)));
+    postGrid.innerHTML = filtered.length ? filtered.map(card).join("") : '<div class="empty">কোনো পোস্ট পাওয়া যায়নি। অন্য শব্দ দিয়ে সার্চ করুন।</div>';
+    postGrid.querySelectorAll(".post-card").forEach(el => el.addEventListener("click",e=>{if(e.target.closest("[data-save]"))return;openPost(Number(el.dataset.id));}));
+    postGrid.querySelectorAll("[data-save]").forEach(btn=>btn.addEventListener("click",e=>{e.stopPropagation();toggleSave(Number(btn.dataset.save));}));
+    offerGrid.innerHTML = posts.filter(p=>p.type==="offer").map(card).join("");
+    offerGrid.querySelectorAll(".post-card").forEach(el=>el.addEventListener("click",()=>openPost(Number(el.dataset.id))));
+    offerGrid.querySelectorAll("[data-save]").forEach(btn=>btn.addEventListener("click",e=>{e.stopPropagation();toggleSave(Number(btn.dataset.save));}));
+    trendingList.innerHTML = posts.slice(0,4).map((p,i)=>`<div class="trend"><span class="trend-num">0${i+1}</span><img src="${p.image}" alt=""><div><strong>${p.title}</strong><small>${p.tag} · ${p.views} views</small></div></div>`).join("");
+  }
+  function toggleSave(id){saved=saved.includes(id)?saved.filter(x=>x!==id):[...saved,id];localStorage.setItem("snkSavedPosts",JSON.stringify(saved));showToast(saved.includes(id)?"পোস্টটি Saved হয়েছে":"Saved list থেকে সরানো হয়েছে");render();}
+  function openPost(id){const p=posts.find(x=>x.id===id);if(!p)return;$("#modalContent").innerHTML=`<span class="eyebrow">${p.tag} · ${p.date}</span><h2>${p.title}</h2><img src="${p.image}" alt="" style="width:100%;max-height:260px;object-fit:cover;border-radius:13px"><p>${p.body}</p><p><b>Published by:</b> ${p.author}</p><button class="primary-btn" id="modalSave">${saved.includes(id)?"★ Saved":"☆ Save article"}</button>`;$("#modal").classList.add("show");$("#modalSave").onclick=()=>{toggleSave(id);$("#modalSave").textContent=saved.includes(id)?"★ Saved":"☆ Save article";};}
+  function showToast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200);}
+  $("#filters").addEventListener("click",e=>{const b=e.target.closest("[data-filter]");if(!b)return;activeFilter=b.dataset.filter;savedOnly=false;$("#filters").querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));render();});
+  $("#searchInput").addEventListener("input",e=>{query=e.target.value.trim().toLowerCase();savedOnly=false;render();});
+  $("#searchInput").addEventListener("keydown",e=>{if(e.key==="Escape"){e.target.value="";query="";render();}});
+  document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();$("#searchInput").focus();}});
+  $("#showSaved").addEventListener("click",()=>{savedOnly=true;activeFilter="all";query="";$("#searchInput").value="";$("#filters").querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x.dataset.filter==="all"));render();$("#latest").scrollIntoView({behavior:"smooth"});});
+  $("#mobileSaved").addEventListener("click",e=>{e.preventDefault();$("#showSaved").click();});
+  document.querySelectorAll("[data-category]").forEach(b=>b.addEventListener("click",()=>{activeFilter=b.dataset.category;savedOnly=false;$("#filters").querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x.dataset.filter===activeFilter));render();$("#latest").scrollIntoView({behavior:"smooth"});}));
+  $("#themeBtn").addEventListener("click",()=>{document.body.classList.toggle("dark");localStorage.setItem("snkTheme",document.body.classList.contains("dark")?"dark":"light");$("#themeBtn").textContent=document.body.classList.contains("dark")?"☀":"☾";});
+  if(localStorage.getItem("snkTheme")==="dark"){document.body.classList.add("dark");$("#themeBtn").textContent="☀";}
+  $("#langBtn").addEventListener("click",()=>{document.body.classList.toggle("bn");showToast(document.body.classList.contains("bn")?"বাংলা ফন্ট চালু":"English font style");});
+  $("#moreBtn").addEventListener("click",()=>$("#moreMenu").classList.toggle("open"));
+  document.addEventListener("click",e=>{if(!e.target.closest("#moreMenu"))$("#moreMenu").classList.remove("open");});
+  $("#menuBtn").addEventListener("click",()=>{const nav=$("#desktopNav");const open=nav.style.display==="block";nav.style.display=open?"none":"block";if(!open){nav.style.position="absolute";nav.style.left="0";nav.style.right="0";nav.style.top="64px";nav.style.background="var(--surface)";nav.style.padding="8px 12px";nav.querySelector(".nav").style.flexWrap="wrap";}});
+  $("#notifyBtn").addEventListener("click",()=>showToast("নতুন নোটিফিকেশন শিগগিরই যুক্ত হবে।"));
+  $("#newsletterForm").addEventListener("submit",e=>{e.preventDefault();const email=$("#newsletterEmail").value.trim();let list=JSON.parse(localStorage.getItem("snkNewsletterDemo")||"[]");if(!list.includes(email)){list.push(email);localStorage.setItem("snkNewsletterDemo",JSON.stringify(list));}$("#newsletterEmail").value="";showToast("ধন্যবাদ! Demo subscription সংরক্ষিত হয়েছে।");});
+  $("#modalClose").addEventListener("click",()=>$("#modal").classList.remove("show"));
+  $("#modal").addEventListener("click",e=>{if(e.target.id==="modal")$("#modal").classList.remove("show");});
+  $("#year").textContent=new Date().getFullYear();
+  render();
+</script>
+</body>
+</html>
